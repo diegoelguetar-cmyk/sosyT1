@@ -7,9 +7,6 @@
 
 typedef unsigned int unit;
 
-int len(unit a[]){
-  return sizeof(a)>>2;
-}
 
 int det_nbits(unit a[], int n_bit){  
   /*
@@ -17,7 +14,7 @@ int det_nbits(unit a[], int n_bit){
 
   */
 
-  int l = len(a);
+  int l = sizeof(a)>>2;
   int n = 32; // numero de bits de unit
 
   if (n_bit*l > 32){
@@ -62,9 +59,9 @@ int concatenar(int a[], int nbits, int l){
 }
 
 uint comprimir(uint a[], int nbits) {
-  int l = len(a); 
+  int l = sizeof(a)>>2;
   nbits= det_nbits(a, nbits);
-  
+
   for (int i =0; i<l; i++){
     a[i] = truncar(nbits, a[i]);
     a[i] = a[i] << (i*nbits);
@@ -75,7 +72,8 @@ uint comprimir(uint a[], int nbits) {
 
 
 int main(){
-  int m = mask(2);
-  printf("mask: %d\n", mask);
+  unit a[] = {2,3,4};
+  int r = comprimir(a, 1);
+  printf("%d", r);
 
 }
