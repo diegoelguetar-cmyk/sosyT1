@@ -7,21 +7,24 @@
 
 typedef unsigned int unit;
 
-int det_nbit(int nbit){
-  int n = sizeof(unit) * 8-1;
-  if (nbit > n){
-    return n;
+int mask(int n_bit){
+  if (15<n_bit){
+  n_bit = 15;
   }
-  else{
-    return nbit;
-  }
-}
-
-int mask(int n, int e){
   int m = -1;
+  int mask = ~(m << n_bit);
+  return mask;
+
 
 }
 
 uint comprimir(uint a[], int nbits) {
   ...
+}
+
+
+int main(){
+  mask = mask(2);
+  printf("mask: %d\n", mask);
+
 }
