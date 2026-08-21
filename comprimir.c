@@ -8,13 +8,12 @@
 typedef unsigned int unit;
 
 
-int det_nbits(unit a[], int n_bit){  
+int det_nbits(unit a[], int n_bit, int l){  
   /*
   función que determina el numero en que podemos truncar, asegurando que no se exceda de los 32 bits de un uint. 
 
   */
 
-  int l = sizeof(a)>>2;
   int n = 32; // numero de bits de unit
 
   if (n_bit*l > 32){
@@ -58,9 +57,9 @@ int concatenar(int a[], int nbits, int l){
   return e;
 }
 
-uint comprimir(uint a[], int nbits) {
-  int l = sizeof(a)>>2;
-  nbits= det_nbits(a, nbits);
+unit comprimir(uint a[], int nbits) {
+  int l = sizeof(a)>>2; // PROBLEMA!
+  nbits= det_nbits(a, nbits, l);
 
   for (int i =0; i<l; i++){
     a[i] = truncar(nbits, a[i]);
@@ -73,7 +72,7 @@ uint comprimir(uint a[], int nbits) {
 
 int main(){
   unit a[] = {2,3,4};
-  int r = comprimir(a, 1);
+  uint r = comprimir(a, 1);
   printf("%d", r);
 
 }
