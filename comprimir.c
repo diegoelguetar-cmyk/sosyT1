@@ -56,7 +56,7 @@ int concatenar(int a[], int nbits, int l){
 }
 
 uint comprimir(uint a[], int nbits) {
-  nbits, l = det_nbits(a, nbits);
+  {nbits, l} = det_nbits(a, nbits);
   int mask = mask(nbits);
 
   for (int i =0; i<l; i++){
@@ -64,7 +64,7 @@ uint comprimir(uint a[], int nbits) {
     a[i] = a[i] << (i*nbits);
   }
 
-
+  return concatenar(a, nbits, l);
 }
 
 
